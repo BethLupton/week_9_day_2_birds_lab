@@ -2,7 +2,7 @@ import {useState} from "react";
 import { updateSighting } from "./SightingService";
 
 
-const UpdateForm = ({ sighting, updateSighting }) => {
+const UpdateForm = ({ sighting, updateSighting, handleClick }) => {
     
     const [formData, setFormData] = useState({
         species: {sighting.species},
@@ -30,6 +30,7 @@ const UpdateForm = ({ sighting, updateSighting }) => {
     }
 
     return (
+        <>
         <form onSubmit={onSubmit} id="sightings-form" >
             <h2>Add a Sighting</h2>
             <div className="formWrap">
@@ -62,7 +63,8 @@ const UpdateForm = ({ sighting, updateSighting }) => {
 
             <input type="submit" value="Save" id="save"/>
 	    </form>
-
+        <button onClick={handleClick}></button>
+        </>
     );
 }
 

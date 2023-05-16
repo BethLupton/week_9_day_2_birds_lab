@@ -1,22 +1,28 @@
-import { deleteSighting } from "./SightingService"
+import { deleteSighting, } from "./SightingService"
 import UpdateForm from "./UpdateForm"
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 
-const SightingCard = ({sighting, removeSighting, updateSighting}) => {
+const SightingCard = ({ sighting, removeSighting, updateSighting }) => {
 
     console.log(sighting);
-    const handleDelete = () => {
-        deleteSighting(sighting._id).then(()=>{
-            removeSighting(sighting._id);
-        })
-    }
-
     const [isClicked, setClicked] = useState(false);
+    const [formData, setFormData] = useState({
+        species: sighting.species,
+        location: sighting.location,
+        date: sighting.date
+    })
 
     const handleClick = () => {
         setClicked(!isClicked);
     };
+
+    const handleDelete = () => {
+        deleteSighting(sighting._id).then(() => {
+            removeSighting(sighting._id);
+        })
+    }
+
 
     // const handleUpdate = () => {
     //     updateSighting(sighting._id)
@@ -24,17 +30,19 @@ const SightingCard = ({sighting, removeSighting, updateSighting}) => {
 
     return (
         <>
-        <div>
-            <UpdateForm {sighting}/>
-        </div>
-        <div>
-            <h1>{sighting.species}</h1>
-            <p>Location: {sighting.location}</p>
-            <p>Date: {sighting.date}</p>
-            <button onClick={handleDelete}> 🗑 </button>
-            <button onClick={handleClick}> ✏️ </button>
-            <hr></hr>
-        </div>
+            <div>
+                {isClicked ? <UpdateForm sighting={sighting} putSighting={putSighting} /> :
+
+                    <div>
+                        <h1>{sighting.species}</h1>
+                        <p>Location: {sighting.location}</p>
+                        <p>Date: {sighting.date}</p>
+                        <button onClick={handleDelete}> 🗑 </button>
+                        <button onClick={handleClick}> ✏️ </button>
+                        <hr></hr>
+                    </div>
+                }
+            </div>
         </>
     )
 

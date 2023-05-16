@@ -18,8 +18,15 @@ const SightingCard = ({sighting, removeSighting, updateSighting}) => {
         setClicked(!isClicked);
     };
 
+    // const handleUpdate = () => {
+    //     updateSighting(sighting._id)
+    // }
+
     return (
         <>
+        <div>
+            <UpdateForm {sighting}/>
+        </div>
         <div>
             <h1>{sighting.species}</h1>
             <p>Location: {sighting.location}</p>
@@ -27,9 +34,6 @@ const SightingCard = ({sighting, removeSighting, updateSighting}) => {
             <button onClick={handleDelete}> 🗑 </button>
             <button onClick={handleClick}> ✏️ </button>
             <hr></hr>
-        </div>
-        <div>
-            <UpdateForm updateSighting={updateSighting} sighting={sighting} handleClick={handleClick}/>
         </div>
         </>
     )

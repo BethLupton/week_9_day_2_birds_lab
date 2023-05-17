@@ -9,7 +9,7 @@ import { getSightings } from "./SightingService";
 function App() {
 
   const [birdSightings, setBirdSightings] = useState([]);
-  // need to have a state for birds being updated
+  // need to have a state for birds being updated. put at top level it then allows you to refresh all components
 
   useEffect(() => {
     getSightings().then((allSightings) => {

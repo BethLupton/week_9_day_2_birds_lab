@@ -9,12 +9,13 @@ import { getSightings } from "./SightingService";
 function App() {
 
   const [birdSightings, setBirdSightings] = useState([]);
+  // need to have a state for birds being updated
 
   useEffect(() => {
     getSightings().then((allSightings) => {
       setBirdSightings(allSightings);
     })
-  }, []);
+  }, []); // add bird to edit state in the square brackets
 
   const addSighting = (sighting) => {
     setBirdSightings([...birdSightings, sighting]);
@@ -24,6 +25,8 @@ function App() {
     const sightingsToKeep = birdSightings.filter(sighting => sighting._id !== id)
     setBirdSightings(sightingsToKeep);
   }
+
+  // need a function for updating birds
 
   return (
     <>

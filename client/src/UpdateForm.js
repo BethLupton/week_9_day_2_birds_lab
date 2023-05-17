@@ -2,7 +2,7 @@ import { useState } from "react";
 import { updateSighting } from "./SightingService";
 
 
-const UpdateForm = ({ sighting, updateSighting, handleClick }) => {
+const UpdateForm = ({ sighting, updateSighting, handleClick }) => { // missing bird to edit function
 
     const [formData, setFormData] = useState({
         species: sighting.species,
@@ -18,7 +18,7 @@ const UpdateForm = ({ sighting, updateSighting, handleClick }) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        putSighting(formData).then((data) => {
+        putSighting(formData).then((data) => { // missing bird to edit before formData
             updateSighting(data);
         })
         // Reset the form input values
@@ -27,6 +27,7 @@ const UpdateForm = ({ sighting, updateSighting, handleClick }) => {
             location: "",
             date: "",
         });
+        handleClick(null)
     }
 
     return (

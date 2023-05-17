@@ -14,7 +14,7 @@ export const postSighting = (payload) => {
     .then(res => res.json())
 }
 
-export const putSighting = (payload) => {
+export const putSighting = (id, payload) => {
     return fetch(baseURL + id, {
         method: 'PUT',
         body: JSON.stringify(payload),

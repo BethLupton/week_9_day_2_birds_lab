@@ -13,7 +13,7 @@ const SightingCard = ({ sighting, removeSighting, updateSighting }) => {
         date: sighting.date
     })
 
-    const handleClick = () => {
+    const handleClick = () => { 
         setClicked(!isClicked);
     };
 
